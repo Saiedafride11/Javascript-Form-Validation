@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Form Validation</title>
+    <style>
+        body{
+            background-color: #13121D;
+            color: #fff;
+            font-family:sans-serif
+        }
+        input, textarea{
+            outline: none;
+            border: none;
+            padding:5px
+        }
+    </style>
+</head>
+<body>
+    <form name="myForm" action="minShik.html" method="post" onsubmit="return validate()">
+        <table align="center" cellpadding="10">
+        <!-- First Name -->
+            <tr>
+                <td> First Name</td>
+                <td><input type="text" name="fName" maxlength="30" placeholder="Your First Name"></td>
+            </tr>
+        <!-- Last Name -->
+            <tr>
+                <td> Last Name</td>
+                <td><input type="text" name="lName" maxlength="30" placeholder="Your Last Name"></td>
+            </tr>
+        <!-- Date Of Birth -->
+            <tr>
+                <td>Date Of Birth</td>
+                <td><input type="date" name="date" id="date" min="2000-01-01"></td>
+            </tr>
+        <!-- Email -->
+            <tr>
+                <td>Email</td>
+                <td><input type="text" name="email" maxlength="100" placeholder="Your Email Address"></td>
+            </tr>
+        <!-- Phone -->
+            <tr>
+                <td>Phone</td>
+                <td><input type="text" name="phone" placeholder="Your Phone Number"></td>
+            </tr>
+        <!-- Gender -->
+            <tr>
+                <td>Gender</td>
+                <td>
+                   <input type="radio" name="gender" value="male">Male 
+                   <input type="radio" name="gender" value="female">Female 
+                   <input type="radio" name="gender" value="custom">Custom 
+                </td>
+            </tr>
+        <!-- State -->
+            <tr>
+                <td>State</td>
+                <td> 
+                    <select name="state" id="state">
+                        <option value="Select Your State">Select Your State</option>
+                        <option value="dhaka">Dhaka</option>
+                        <option value="mymensingh">Mymensingh</option>
+                        <option value="feni">Feni</option>
+                        <option value="ctg">Ctg</option>
+                    </select>
+                
+                </td>
+            </tr>
+        <!-- Country -->
+            <tr>
+                <td>Country</td>
+                <td><input type="text" value="Bangladesh" name="country" readonly="readonly"></td>
+            </tr>
+        <!-- Subject -->
+            <tr>
+                <td>Subject</td>
+                <td>
+                    <input type="checkbox" name="subject" id="subject" value="cse"> CSE 
+                    <input type="checkbox" name="subject" id="subject" value="eee"> EEE 
+                    <input type="checkbox" name="subject" id="subject" value="rac"> RAC 
+                    <input type="checkbox" name="subject" id="subject" value="food"> FOOD 
+                    <input type="checkbox" name="subject" id="subject" value="civil"> CIVIL 
+                    <input type="checkbox" name="subject" id="subject" value="arc"> ARC 
+                </td>
+            </tr>
+        <!-- Message -->
+            <tr>
+                <td>Message</td>
+                <td><textarea name="message" cols="45" placeholder="Enter a Your Message"></textarea></td>
+            </tr>
+        <!-- Submit -->
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" name="submit" value="Submit" style="width: 100%">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        
+        function validate(){
+            var first = document.forms["myForm"]["fName"].value;
+            var last = document.forms["myForm"]["lName"].value;
+            var date = document.forms["myForm"]["date"].value;
+            var email = document.forms["myForm"]["email"].value;
+            var phone = document.forms["myForm"]["phone"].value;
+            var gender = document.forms["myForm"]["gender"].value;
+            var state = document.forms["myForm"]["state"].value;
+            var message = document.forms["myForm"]["message"].value;
+            var subject = document.getElementById('subject');
+            // var patterns = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+        // First Name Validate
+            if(first == ""){
+                alert("Plese Enter Your First Name");
+                return false;
+            }
+            if(!isNaN(first)){
+                alert("Plese Type Character");
+                return false;
+            }
+       
+        // Last Name Validate
+            if(last == ""){
+                alert("Plese Enter Your Last Name");
+                return false;
+            }
+            if(!isNaN(last)){
+                alert("Plese Type Character");
+                return false;
+            }
+
+        // BirthDay Validate
+            if(date == ""){
+                alert("Plese Enter Your Date Of Birth");
+                return false;
+            }
+
+        // Email Validate
+			 if(email == ""){
+                    alert("Plese Enter Your Email");
+                    return false;
+                }
+				
+            var at = email.indexOf("@");
+            var dot = email.lastIndexOf(".");
+
+            if(at < 1 || dot < at + 2 || dot + 2 >= email.length ){
+                alert("Not A Valid Email");
+                return false;
+            }
+
+            // if(email.match(patterns)){
+            //     alert("Not A Valid Email");
+            //     return false;
+            // }
+
+        // Phone Validate
+            if(phone == ""){
+                    alert("Plese Enter Your Phone Number");
+                    return false;
+                }
+            if(isNaN(phone)){
+                alert("Plese Phone Number Should Be Digit");
+                return false;
+            }
+            if(phone.length < 8){
+                alert("Plese Phone Number Must Be 8 disit");
+                return false;
+            }
+
+        // Gender Validate
+            if(gender == ""){
+                    alert("Plese Select Your Gender");
+                    return false;
+                }
+
+         // State Validate
+         if(state == "Select Your State"){
+                    alert("Plese Select Your State");
+                    return false;
+                }
+        // Subject Validate
+            if(!subject.checked){
+                    alert("Plese Select Your Subject");
+                    return false;
+                }
+        // Message Validate
+        if(message == ""){
+                    alert("Plese Enter Your Message");
+                    return false;
+                }
+                
+        }
+
+    </script>
+</body>
+</html>

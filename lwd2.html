@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Form Validation</title>
+    <style>
+        body{
+            background-color: #1A237E;
+            color: #fff;
+            font-family:sans-serif
+        }
+        input, textarea{
+            outline: none;
+            border: none;
+            padding:5px
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <table align="center" cellpadding="10">
+        <!-- First Name -->
+            <tr>
+                <td> First Name</td>
+                <td><input type="text" name="fName" maxlength="30" placeholder="Your First Name"></td>
+            </tr>
+        <!-- Last Name -->
+            <tr>
+                <td> Last Name</td>
+                <td><input type="text" name="lName" maxlength="30" placeholder="Your Last Name"></td>
+            </tr>
+        <!-- Date Of Birth -->
+            <tr>
+                <td>Date Of Birth</td>
+                <td><input type="date" name="date" id="date" min="2000-01-01"></td>
+            </tr>
+        <!-- Email -->
+            <tr>
+                <td>Email</td>
+                <td><input type="text" name="email" maxlength="100" placeholder="Your Email Address"></td>
+            </tr>
+        <!-- Phone -->
+            <tr>
+                <td>Phone</td>
+                <td><input type="text" name="phone" placeholder="Your Phone Number"></td>
+            </tr>
+        <!-- Gender -->
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="radio" name="gender" value="male">Male 
+                    <input type="radio" name="gender" value="female">Female 
+                    <input type="radio" name="gender" value="custom">Custom 
+                </td>
+            </tr>
+        <!-- State -->
+            <tr>
+                <td>State</td>
+                <td> 
+                    <select name="state" id="state">
+                        <option value="Select Your State">Select Your State</option>
+                        <option value="dhaka">Dhaka</option>
+                        <option value="mymensingh">Mymensingh</option>
+                        <option value="feni">Feni</option>
+                        <option value="ctg">Ctg</option>
+                    </select>
+                
+                </td>
+            </tr>
+        <!-- Country -->
+            <tr>
+                <td>Country</td>
+                <td><input type="text" value="Bangladesh" name="country" readonly="readonly"></td>
+            </tr>
+        <!-- Subject -->
+            <tr>
+                <td>Subject</td>
+                <td>
+                    <input type="checkbox" name="subject" id="subject" value="cse"> CSE 
+                    <input type="checkbox" name="subject" id="subject" value="eee"> EEE 
+                    <input type="checkbox" name="subject" id="subject" value="rac"> RAC 
+                    <input type="checkbox" name="subject" id="subject" value="food"> FOOD 
+                    <input type="checkbox" name="subject" id="subject" value="civil"> CIVIL 
+                    <input type="checkbox" name="subject" id="subject" value="arc"> ARC 
+                </td>
+            </tr>
+        <!-- Message -->
+            <tr>
+                <td>Message</td>
+                <td><textarea name="message" cols="45" placeholder="Enter a Your Message"></textarea></td>
+            </tr>
+        <!-- Submit -->
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" name="submit" value="Submit" style="width: 100%">
+                </td>
+            </tr>
+        </table>
+    </form>
+    
+</body>
+</html>

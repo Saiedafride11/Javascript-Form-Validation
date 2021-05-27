@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+   <style>
+      
+   </style>
+</head>
+<body>
+    <div id="error"></div>
+    <form action="cNpl.html" method="post" id="form">
+        <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Place Your Name">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="Password">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+
+    <script>
+        const name = document.getElementById('name')
+        const password = document.getElementById('password')
+        const form = document.getElementById('form')
+        const errorElement = document.getElementById('error')
+
+
+        form.addEventListener("submit", (e) => {
+            let messages = []
+            if(name.value === '' || name.value == null){
+                messages.push('Name is Required')
+            }
+            if(password.value.length <=6){
+                messages.push('Password Must be longer than 6 characters');
+                password.style.border = "1px solid red";
+                password.focus()
+
+            }
+            if(password.value.length >= 20){
+                messages.push('Password Must be less than 20 characters')
+                password.style.border = "1px solid red";
+                password.focus()
+            }
+            if(password.value === 'password'){
+                messages.push('Password cannot be password')
+                password.style.border = "1px solid red";
+                password.focus()
+            }
+            if(messages.length > 0){
+                e.preventDefault()
+                errorElement.innerText = messages.join();
+                name.value = '';
+                password.value = ''; 
+            }
+            
+        })
+    </script>
+</body>
+</html> 
