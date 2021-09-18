@@ -10,7 +10,9 @@
    </style>
 </head>
 <body>
-    <div id="error"></div>
+    <div id="error">
+
+    </div>
     <form action="cNpl.html" method="post" id="form">
         <div>
             <label for="name">Name</label>
@@ -36,6 +38,13 @@
             if(name.value === '' || name.value == null){
                 messages.push('Name is Required')
             }
+            if(!isNaN(name.value)){
+                messages.push('Name is Character')
+            }
+
+            if(isNaN(password.value)){
+                messages.push('Password is Number')
+            }
             if(password.value.length <=6){
                 messages.push('Password Must be longer than 6 characters');
                 password.style.border = "1px solid red";
@@ -47,14 +56,22 @@
                 password.style.border = "1px solid red";
                 password.focus()
             }
+            
             if(password.value === 'password'){
-                messages.push('Password cannot be password')
+                messages.push('Password cannot be Password')
                 password.style.border = "1px solid red";
                 password.focus()
             }
+
+            // if(password.value.length >=6 && password.value.length <= 20){
+            //     password.style.border = "1px solid green";
+            //     password.focus()
+            // }
+            
             if(messages.length > 0){
                 e.preventDefault()
                 errorElement.innerText = messages.join();
+                errorElement.style.color = 'red';
                 name.value = '';
                 password.value = ''; 
             }

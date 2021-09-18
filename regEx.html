@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+  <form>
+    <br />
+      <!-- <input type="text" name="email" onchange="handleChange(event)" placeholder="Enter Email Address" required/> -->
+      <input type="text" name="email" onblur="handleBlur(event)" placeholder="Enter Email Address" required/>
+      <br />
+      <!-- <input type="password" name="password" onchange="handleChange(event)" placeholder="Enter Password" required/>  -->
+      <input type="password" name="password" onblur="handleBlur(event)" placeholder="Enter Password" required/>
+      <br />
+      <input type="submit" value="Submit" />
+  </form>
+
+  <p id="message">Message Me</p>
+
+
+
+  <script>
+  //   const handleChange = (event) => {
+  //   console.log(event.target.name, event.target.value)
+  // }
+
+  const handleBlur = (event) => {
+    event.preventDefault()
+    // console.log(event.target.name, event.target.value);
+    let isFieldValid = true;
+    if(event.target.name == 'email') {
+      // const isEmailValid = /\S+@\S+\.\S+/.test(event.target.value);
+      // console.log(isEmailValid)
+      isFieldValid = /\S+@\S+\.\S+/.test(event.target.value);
+    }
+    if(event.target.name == 'password'){
+      const passwordValid = event.target.value.length > 6;
+      const passwordHasNumber = /\d{1}/.test(event.target.value)
+      // console.log(passwordValid && passwordHasNumber)
+      isFieldValid = passwordValid && passwordHasNumber
+    }
+    if(isFieldValid == true){
+      document.getElementById("message").innerHTML = "Yes, successfully"
+    }
+    if(isFieldValid == false){
+      document.getElementById("message").innerHTML = "Uffs, Sorry"
+    }
+  }
+ 
+  </script>
+
+</body>
+</html>
